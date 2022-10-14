@@ -1,0 +1,177 @@
+[
+    {
+        "id": "892d1ff5.4b672",
+        "type": "tab",
+        "label": "Sensors",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2d8fa366.97cf24",
+        "type": "mqtt in",
+        "z": "892d1ff5.4b672",
+        "name": "",
+        "topic": "+/sensor/+/state",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "b510084.584d478",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 180,
+        "y": 400,
+        "wires": [
+            [
+                "95f9de9b.2946b8"
+            ]
+        ]
+    },
+    {
+        "id": "95f9de9b.2946b8",
+        "type": "function",
+        "z": "892d1ff5.4b672",
+        "name": "",
+        "func": "const items = msg.topic.split(\"/\");\nconst hostname = items[0];\nconst location = items[2].split(\"_\")[0];\nconst type = items[2].split(\"_\")[1];\nconst time = new Date().toISOString();\nconst value = msg.payload;\n\nmsg.query = {\n    text: \"INSERT INTO live (time, sensor_id, value) VALUES ($1, (SELECT id FROM sensors WHERE hostname = $2 AND location = $3 AND type = $4), $5);\",\n    values: [time, hostname, location, type, value],\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 400,
+        "wires": [
+            [
+                "e858c723.04d35",
+                "516d65b8.86ec84"
+            ]
+        ]
+    },
+    {
+        "id": "e858c723.04d35",
+        "type": "debug",
+        "z": "892d1ff5.4b672",
+        "name": "msg transform",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "516d65b8.86ec84",
+        "type": "digitaloak-postgresql-query",
+        "z": "892d1ff5.4b672",
+        "name": "",
+        "server": "b5714132.77b3e8",
+        "inputs": 1,
+        "outputs": 0,
+        "x": 730,
+        "y": 400,
+        "wires": []
+    },
+    {
+        "id": "09cbf857b2d39a16",
+        "type": "mqtt in",
+        "z": "892d1ff5.4b672",
+        "name": "",
+        "topic": "+/binary_sensor/+/state",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "b510084.584d478",
+        "nl": false,
+        "rap": false,
+        "inputs": 0,
+        "x": 200,
+        "y": 480,
+        "wires": [
+            [
+                "22084a793d6922f2"
+            ]
+        ]
+    },
+    {
+        "id": "22084a793d6922f2",
+        "type": "function",
+        "z": "892d1ff5.4b672",
+        "name": "",
+        "func": "const items = msg.topic.split(\"/\");\nconst hostname = items[0];\nconst location = items[2].split(\"_\")[0];\nconst type = items[2].split(\"_\")[1];\nconst time = new Date().toISOString();\nvalue = msg.payload;\n\nif (value == \"ON\") {\n  value = 1; \n} else if (value == \"OFF\") {\n  value = 0;\n}\n\nmsg.query = {\n    text: \"INSERT INTO states (time, sensor_id, value) VALUES ($1, (SELECT id FROM sensors WHERE hostname = $2 AND location = $3 AND type = $4), $5);\",\n    values: [time, hostname, location, type, value],\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 440,
+        "y": 480,
+        "wires": [
+            [
+                "516d65b8.86ec84",
+                "af5fe9b240c70495"
+            ]
+        ]
+    },
+    {
+        "id": "af5fe9b240c70495",
+        "type": "debug",
+        "z": "892d1ff5.4b672",
+        "name": "msg transform",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 740,
+        "y": 480,
+        "wires": []
+    },
+    {
+        "id": "b510084.584d478",
+        "type": "mqtt-broker",
+        "name": "",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "birthMsg": {},
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "closeMsg": {},
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": "",
+        "willMsg": {},
+        "sessionExpiry": ""
+    },
+    {
+        "id": "b5714132.77b3e8",
+        "type": "digitaloak-postgresql-connection-manager",
+        "name": "localhost:5432/esphome",
+        "host": "localhost",
+        "port": "5432",
+        "database": "esphome",
+        "tls": "",
+        "use_tls": false,
+        "pool_max_clients": "10",
+        "pool_client_max_idle": "10000",
+        "client_query_timeout": "",
+        "client_statement_timeout": "",
+        "client_connection_timeout_millis": "",
+        "is_client_enabled": "1"
+    }
+]

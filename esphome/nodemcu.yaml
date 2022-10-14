@@ -1,0 +1,48 @@
+esphome:
+  name: espnode
+  platform: ESP32
+  board: nodemcu-32s 
+
+wifi:
+  ssid: "Your SSID"
+  password: "Your wifi password"
+
+api:
+
+ota:
+
+esp32_ble_tracker:
+  scan_parameters:
+    window: 120ms
+
+web_server:
+  port: 80
+
+mqtt:
+  broker: 192.168.178.55
+  username: esphome
+  password: "Your broker password"
+
+sensor:
+  - platform: uptime
+    name: "ESP-Node Uptime"
+    filters:
+    - throttle: 10min
+
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:8C:34:B7"
+    bindkey: "fe39106baeedb7c801e3d63c4396f97e"
+    temperature:
+      name: "Livingroom Temperature"
+    humidity:
+      name: "Livingroom  Humidity"
+    battery_level:
+      name: "Livingroom Battery-Level"
+  - platform: ble_rssi
+    mac_address: "A4:C1:38:8C:34:B7"
+    name: "Livingroom RSSI-value"
+    filters:
+    - median:
+        window_size: 60
+        send_every: 60
+        send_first_at: 1
