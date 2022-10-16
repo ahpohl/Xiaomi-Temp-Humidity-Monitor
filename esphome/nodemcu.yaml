@@ -1,5 +1,5 @@
 esphome:
-  name: espnode
+  name: nodemcu
   platform: ESP32
   board: nodemcu-32s 
 
@@ -11,6 +11,8 @@ api:
 
 ota:
 
+logger:
+
 esp32_ble_tracker:
   scan_parameters:
     window: 120ms
@@ -19,8 +21,8 @@ web_server:
   port: 80
 
 mqtt:
-  broker: 192.168.178.55
-  username: esphome
+  broker: 192.168.178.27
+  username: mqtt
   password: "Your broker password"
 
 sensor:
@@ -33,14 +35,14 @@ sensor:
     mac_address: "A4:C1:38:8C:34:B7"
     bindkey: "fe39106baeedb7c801e3d63c4396f97e"
     temperature:
-      name: "Livingroom Temperature"
+      name: "Piano Temperature"
     humidity:
-      name: "Livingroom  Humidity"
+      name: "Piano Humidity"
     battery_level:
-      name: "Livingroom Battery-Level"
+      name: "Piano Battery-Level"
   - platform: ble_rssi
     mac_address: "A4:C1:38:8C:34:B7"
-    name: "Livingroom RSSI-value"
+    name: "Piano RSSI-value"
     filters:
     - median:
         window_size: 60
