@@ -6,7 +6,7 @@ Setup temperature and humidity monitoring with permanent storage.
 
 * Xiaomi Mi Temperature and Humidity Monitor 2 (LYWSD03MMC and others)
 * ESP32 NODEMCU Module WiFi Development Board
-* Raspberry Pi (recommended at least Pi 2) or any other SBC such as Hardkernel Odroid C2/C4
+* Raspberry Pi (recommended at least Pi 3 with 64 bit version of Raspberry Pi OS) or any other SBC such as Hardkernel Odroid C2/C4
 
 ## Software
 
