@@ -25,4 +25,4 @@ SELECT add_continuous_aggregate_policy('sensors_daily',
   end_offset => INTERVAL '1 hour',
   schedule_interval => '1 hour');
 
-GRANT SELECT ON TABLE sensors_daily TO grafana;
+GRANT SELECT ON TABLE sensors_daily TO mqtt;

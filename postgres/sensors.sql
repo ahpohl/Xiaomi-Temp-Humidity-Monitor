@@ -1,3 +1,5 @@
+\c esphome
+
 CREATE EXTENSION IF NOT EXISTS timescaledb;
 DROP TABLE IF EXISTS "sensors" CASCADE;
 DROP TABLE IF EXISTS "live" CASCADE;
@@ -22,5 +24,5 @@ CREATE TABLE "live" (
 SELECT create_hypertable('live', 'time');
 SELECT add_retention_policy('live', INTERVAL '90 days');
 
-GRANT INSERT, SELECT ON TABLE live TO nodejs;
-GRANT SELECT ON TABLE live TO grafana;
+GRANT INSERT, SELECT ON TABLE live TO mqtt;
+GRANT SELECT ON TABLE sensors TO mqtt;

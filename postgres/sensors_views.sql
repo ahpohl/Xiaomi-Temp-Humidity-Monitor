@@ -19,7 +19,7 @@ FROM sensors_daily
 GROUP BY bucket_1m, sensor_id
 WITH NO DATA;
 
-GRANT SELECT ON TABLE sensors_monthly TO grafana;
+GRANT SELECT ON TABLE sensors_monthly TO mqtt;
 
 ---
 --- yearly ---
@@ -40,4 +40,4 @@ FROM sensors_daily
 GROUP BY bucket_1y, sensor_id
 WITH NO DATA;
 
-GRANT SELECT ON TABLE sensors_yearly TO grafana;
+GRANT SELECT ON TABLE sensors_yearly TO mqtt;
