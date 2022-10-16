@@ -19,4 +19,4 @@ Setup temperature and humidity monitoring with permanent storage.
 
 ## Documentation
 
-Installation instructions are on the wiki pages.
+Installation instructions are on the [wiki](https://github.com/ahpohl/Xiaomi-temp-humidity-monitor/wiki).
