@@ -27,7 +27,7 @@ mqtt:
 
 sensor:
   - platform: uptime
-    name: "ESP-Node Uptime"
+    name: "Nodemcu Uptime"
     filters:
     - throttle: 10min
 
