@@ -51,7 +51,7 @@
         "type": "debug",
         "z": "892d1ff5.4b672",
         "name": "msg transform",
-        "active": false,
+        "active": true,
         "tosidebar": true,
         "console": false,
         "tostatus": false,
@@ -139,6 +139,7 @@
         "broker": "127.0.0.1",
         "port": "1883",
         "clientid": "",
+        "autoConnect": true,
         "usetls": false,
         "compatmode": false,
         "protocolVersion": "4",
@@ -156,6 +157,7 @@
         "willQos": "0",
         "willPayload": "",
         "willMsg": {},
+        "userProps": "",
         "sessionExpiry": ""
     },
     {
