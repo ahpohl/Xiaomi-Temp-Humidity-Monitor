@@ -48,3 +48,40 @@ sensor:
         window_size: 60
         send_every: 60
         send_first_at: 1
+
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:BC:B9:B2"
+    bindkey: "66c0f070f7394bb753e11198e3061830"
+    temperature:
+      name: "Kitchen Temperature"
+    humidity:
+      name: "Kitchen Humidity"
+    battery_level:
+      name: "Kitchen Battery-Level"
+  - platform: ble_rssi
+    mac_address: "A4:C1:38:BC:B9:B2"
+    name: "Kitchen RSSI-value"
+    filters:
+    - median:
+        window_size: 60
+        send_every: 60
+        send_first_at: 1
+
+  - platform: xiaomi_lywsd03mmc
+    mac_address: "A4:C1:38:B1:CD:7F"
+    bindkey: "eef418daf699a0c188f3bfd17e4565d9"
+    temperature:
+      name: "Patio Temperature"
+    humidity:
+      name: "Patio Humidity"
+    battery_level:
+      name: "Patio Battery-Level"
+  - platform: ble_rssi
+    mac_address: "A4:C1:38:B1:CD:7F"
+    name: "Piano RSSI-value"
+    filters:
+    - median:
+        window_size: 60
+        send_every: 60
+        send_first_at: 1
+
