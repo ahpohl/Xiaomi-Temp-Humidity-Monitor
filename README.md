@@ -2,6 +2,8 @@
 
 Setup temperature and humidity monitoring with permanent storage.
 
+<img src="images/esphome.png" width="200">
+
 ## Hardware
 
 * Xiaomi Mi Temperature and Humidity Monitor 2 (LYWSD03MMC and others)
