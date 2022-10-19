@@ -10,8 +10,6 @@ Setup temperature and humidity monitoring with permanent storage.
 * ESP32 NODEMCU Module WiFi Development Board
 * Raspberry Pi (recommended at least Pi 3 with 64 bit version of Raspberry Pi OS) or any other SBC such as Hardkernel Odroid C2/C4
 
-<img src="images/dashboard.png" width="400">
-
 ## Software
 
 * ESP32 board flashed with ESPHome 
@@ -20,6 +18,8 @@ Setup temperature and humidity monitoring with permanent storage.
 * PostgreSQL with TimescaleDB and pg_cron extensions
 * Grafana dashboard visualisation
 * Optional: Home Assistant or OpenHAB home automation systems
+
+<img src="images/dashboard.png" width="800">
 
 ## Documentation
 
