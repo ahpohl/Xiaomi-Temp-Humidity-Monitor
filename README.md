@@ -2,7 +2,7 @@
 
 Setup temperature and humidity monitoring with permanent storage.
 
-<img src="images/esphome.png" width="200">
+<img src="images/hardware.png" width="400">
 
 ## Hardware
 
